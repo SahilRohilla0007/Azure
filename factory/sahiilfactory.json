@@ -1,0 +1,9 @@
+{
+	"name": "sahiilfactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f687e2c8-89d4-451d-9f4e-293f21e1a79c",
+		"tenantId": "e4e34038-ea1f-4882-b6e8-ccd776459ca0"
+	}
+}
