@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "adf"
+				"fileName": "demofile.csv",
+				"container": "synpasecontainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
