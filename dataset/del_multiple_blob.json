@@ -1,0 +1,25 @@
+{
+	"name": "del_multiple_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sahildatalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"containername": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": {
+					"value": "@dataset().containername",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
