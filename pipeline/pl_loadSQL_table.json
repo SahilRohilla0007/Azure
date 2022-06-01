@@ -20,6 +20,7 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
+							"wildcardFileName": "demofile.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -30,7 +31,6 @@
 						"type": "AzureSqlSink",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
-						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,

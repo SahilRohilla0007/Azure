@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "log_input_dataset",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Sahildatalake",
@@ -14,10 +14,12 @@
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
+			{
+				"type": "String"
+			},
 			{
 				"type": "String"
 			},

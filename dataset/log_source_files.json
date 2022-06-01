@@ -1,15 +1,24 @@
 {
-	"name": "DelimitedText1",
+	"name": "log_source_files",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Sahildatalake",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
 				"container": "adf"
 			},
 			"columnDelimiter": ",",
@@ -19,9 +28,15 @@
 		},
 		"schema": [
 			{
+				"name": "Id ",
 				"type": "String"
 			},
 			{
+				"name": "name ",
+				"type": "String"
+			},
+			{
+				"name": "roll",
 				"type": "String"
 			}
 		]
