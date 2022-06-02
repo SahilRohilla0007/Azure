@@ -1,0 +1,46 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sahildatalake",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "10kSamplejson.json",
+				"container": "adf"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Sheet1": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Serial Number": {
+								"type": "string"
+							},
+							"Company Name": {
+								"type": "string"
+							},
+							"Employee Markme": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"Leave": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

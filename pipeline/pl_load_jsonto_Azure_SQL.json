@@ -1,0 +1,110 @@
+{
+	"name": "pl_load_jsonto_Azure_SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['Serial Number']"
+								},
+								"sink": {
+									"name": "Serial Number",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"path": "['Company Name']"
+								},
+								"sink": {
+									"name": "Company Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Employee Markme']"
+								},
+								"sink": {
+									"name": "Employee Markme",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Description']"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['Leave']"
+								},
+								"sink": {
+									"name": "Leave",
+									"type": "Int32"
+								}
+							}
+						],
+						"collectionReference": "$['Sheet1']",
+						"mapComplexValuesToString": false
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": "dbo",
+							"TableName": "Emp_tbl"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
