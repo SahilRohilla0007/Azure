@@ -105,19 +105,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -499,6 +486,57 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Sahildatalake",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "10kSamplejson.json",
+						"container": "adf"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"Sheet1": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"Serial Number": {
+										"type": "string"
+									},
+									"Company Name": {
+										"type": "string"
+									},
+									"Employee Markme": {
+										"type": "string"
+									},
+									"Description": {
+										"type": "string"
+									},
+									"Leave": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Sahildatalake')]"
 			]
 		},
 		{
