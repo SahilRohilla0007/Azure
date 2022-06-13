@@ -26,6 +26,12 @@
 		"SqlServer1_properties_typeProperties_userName": {
 			"value": "CBLLAP0351\\Admin"
 		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://sahilvault.vault.azure.net/"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_connectionString_secretName": {
+			"value": "SQLDB"
+		},
 		"containerUri": {
 			"value": ""
 		},
