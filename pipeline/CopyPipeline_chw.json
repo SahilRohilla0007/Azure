@@ -1,0 +1,128 @@
+{
+	"name": "CopyPipeline_chw",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_chw",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_chw",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "dbo.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "output//@{item().destination.fileName}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_chw",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_chw",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_fileName": "@item().destination.fileName"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"table": "abc"
+						},
+						"destination": {
+							"fileName": "dboabc.txt"
+						}
+					},
+					{
+						"source": {
+							"table": "Adfobject"
+						},
+						"destination": {
+							"fileName": "dboAdfobject.txt"
+						}
+					},
+					{
+						"source": {
+							"table": "All_data"
+						},
+						"destination": {
+							"fileName": "dboAll_data.txt"
+						}
+					},
+					{
+						"source": {
+							"table": "All_Data_new"
+						},
+						"destination": {
+							"fileName": "dboAll_Data_new.txt"
+						}
+					},
+					{
+						"source": {
+							"table": "Audit_log"
+						},
+						"destination": {
+							"fileName": "dboAudit_log.txt"
+						}
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
