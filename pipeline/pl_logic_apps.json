@@ -61,7 +61,7 @@
 				]
 			},
 			{
-				"name": "Web1",
+				"name": "logic app",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
