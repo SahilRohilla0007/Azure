@@ -20,17 +20,17 @@
 		"SqlServer1_password": {
 			"value": ""
 		},
-		"RestService1_properties_typeProperties_url": {
-			"value": "https://reqres.in/api/users"
-		},
-		"SqlServer1_properties_typeProperties_userName": {
-			"value": "CBLLAP0351\\Admin"
-		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://sahilvault.vault.azure.net/"
 		},
 		"AzureSqlDatabase2_properties_typeProperties_connectionString_secretName": {
 			"value": "SQLDB"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "CBLLAP0351\\Admin"
 		}
 	}
 }
